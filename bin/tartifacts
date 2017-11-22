@@ -22,10 +22,9 @@ const help = `
       -o, --output    Path to destination artifact file or directory
 
     Examples
-      $ tartifacts --config artifacts.json -d dist/
-
-      $ tartifacts --patterns="./patterns.txt" --output="artifact.tar.gz"
-      $ tartifacts --include="lib/**" --exclude="node_modules/" --output="artifact.tar.gz"
+      $ tartifacts --config artifacts.json --dest-dir dist/
+      $ tartifacts --include "lib/**" --exclude "node_modules/" --output artifact.tar.gz
+      $ tartifacts --patterns ./patterns.txt --output=artifact.tar.gz
 `;
 
 const cli = meow({
