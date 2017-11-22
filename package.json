@@ -1,0 +1,61 @@
+{
+  "name": "tartifacts-cli",
+  "version": "0.0.0",
+  "description": "The tool to create artifacts for your assemblies.",
+  "license": "MIT",
+  "repository": "blond/tartifacts-cli",
+  "author": "Andrew Abramov <mail@blond.im> (github.com/blond)",
+  "keywords": [
+    "artifacts",
+    "assemblies",
+    "tarball",
+    "tar",
+    "gzip",
+    "tar.gz",
+    "destination",
+    "copy",
+    "files"
+  ],
+  "bin": {
+    "tartifacts": "bin/tartifacts"
+  },
+  "files": [
+    "bin/**",
+    "lib/**"
+  ],
+  "engines": {
+    "node": ">= 4.0"
+  },
+  "dependencies": {
+    "async-each": "1.0.1",
+    "es6-promisify": "5.0.0",
+    "meow": "3.7.0",
+    "node-file-eval": "1.0.0",
+    "tartifacts": "github:blond/tartifacts",
+    "worker-farm": "1.5.2"
+  },
+  "devDependencies": {
+    "ava": "^0.18.0",
+    "coveralls": "^2.11.9",
+    "eslint": "^4.11.0",
+    "eslint-config-pedant": "^1.0.0",
+    "mock-fs": "^4.4.2",
+    "nyc": "^11.3.0"
+  },
+  "scripts": {
+    "pretest": "eslint .",
+    "test": "nyc ava",
+    "unit-test": "ava",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "ava": {
+    "serial": true,
+    "verbose": true,
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "sources": [
+      "lib/**/*.js"
+    ]
+  }
+}

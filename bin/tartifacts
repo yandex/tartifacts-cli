@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+'use strict';
+
+const meow = require('meow');
+
+const getArtifactsInfo = require('../lib/cli').getArtifactsInfo;
+const writeArtifacts = require('../lib').writeArtifacts;
+
+const help = `
+    Usage
+      $ tartifacts
+
+    Options (config mode)
+      -c, --config    Path to config with artifacts info
+      -r, --root      Path to root directory for artifacts patterns
+      -d, --dest-dir  Path to destination directory for artifacts from config
+
+    Options (single mode)
+      -p, --patterns  Path to file with includes and excludes patterns of artifact
+      -i, --include   Paths to inlcude files of artifact
+      -e, --exclude   Paths to exclude files of artifact
+      -o, --output    Path to destination artifact file or directory
+
+    Examples
+      $ tartifacts --config artifacts.json -d dist/
+
+      $ tartifacts --patterns="./patterns.txt" --output="artifact.tar.gz"
+      $ tartifacts --include="lib/**" --exclude="node_modules/" --output="artifact.tar.gz"
+`;
+
+const cli = meow({
+    description: '📦  The tool to create artifacts for your assemblies',
+    help
+}, {
+    alias: {
+        h: 'help',
+        v: 'version',
+        c: 'config',
+        r: 'root',
+        d: 'dest-dir',
+        p: 'patterns',
+        i: 'include',
+        e: 'exclude',
+        o: 'output'
+    }
+});
+
+const flags = cli.flags;
+const options = {
+    root: flags.root,
+    destDir: flags.destDir
+};
+
+if (Object.keys(flags).length === 0) {
+    return cli.showHelp();
+}
+
+return getArtifactsInfo(flags)
+    .then(artifacts => writeArtifacts(artifacts, options));
