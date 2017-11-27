@@ -37,6 +37,11 @@ Usage
 ```
 $ tartifacts --help
 
+Options
+      --dot-files     Include dotfiles
+      --empty-dirs    Include empty directories
+      --empty-files   Include empty files
+
 Options (config mode)
     -c, --config    Path to config with artifacts info
     -r, --root      Path to root directory for artifacts patterns
