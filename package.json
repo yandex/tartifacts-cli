@@ -31,7 +31,7 @@
     "es6-promisify": "5.0.0",
     "meow": "3.7.0",
     "node-file-eval": "1.0.0",
-    "tartifacts": "2.0.0-2",
+    "tartifacts": "2.0.0-3",
     "worker-farm": "1.5.2"
   },
   "devDependencies": {
