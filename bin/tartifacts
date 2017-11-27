@@ -4,11 +4,17 @@
 const meow = require('meow');
 
 const getArtifactsInfo = require('../lib/cli').getArtifactsInfo;
+const getOptions = require('../lib/cli').getOptions;
 const writeArtifacts = require('../lib').writeArtifacts;
 
 const help = `
     Usage
       $ tartifacts
+
+    Options
+      --dot-files     Include dotfiles
+      --empty-dirs    Include empty directories
+      --empty-files   Include empty files
 
     Options (config mode)
       -c, --config    Path to config with artifacts info
@@ -45,10 +51,7 @@ const cli = meow({
 });
 
 const flags = cli.flags;
-const options = {
-    root: flags.root,
-    destDir: flags.destDir
-};
+const options = getOptions(flags);
 
 if (Object.keys(flags).length === 0) {
     return cli.showHelp();
