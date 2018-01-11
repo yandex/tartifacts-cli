@@ -18,12 +18,14 @@ test('should return dest dir option', async t => {
 
 test('should return truthy options', async t => {
     const options = await getOptions({
+        followSymlinks: true,
         dotFiles: true,
         emptyDirs: 'true',
         emptyFiles: 1
     });
 
     t.deepEqual(options, {
+        followSymlinks: true,
         dotFiles: true,
         emptyDirs: true,
         emptyFiles: true
@@ -32,12 +34,14 @@ test('should return truthy options', async t => {
 
 test('should return falsy options', async t => {
     const options = await getOptions({
+        followSymlinks: false,
         dotFiles: false,
         emptyDirs: 'false',
         emptyFiles: 0
     });
 
     t.deepEqual(options, {
+        followSymlinks: false,
         dotFiles: false,
         emptyDirs: false,
         emptyFiles: false
