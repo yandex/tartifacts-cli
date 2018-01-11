@@ -32,7 +32,7 @@
     "lodash.pick": "4.4.0",
     "meow": "3.7.0",
     "node-file-eval": "1.0.0",
-    "tartifacts": "2.0.0-3",
+    "tartifacts": "2.0.0-4",
     "worker-farm": "1.5.2"
   },
   "devDependencies": {
