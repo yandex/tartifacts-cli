@@ -34,29 +34,66 @@ const help = `
       $ tartifacts --patterns ./patterns.txt --output=artifact.tar.gz
 `;
 
-const cli = meow({
+const cli = meow(help, {
     description: '📦  The tool to create artifacts for your assemblies',
-    help
-}, {
-    alias: {
-        h: 'help',
-        v: 'version',
-        c: 'config',
-        r: 'root',
-        d: 'dest-dir',
-        p: 'patterns',
-        i: 'include',
-        e: 'exclude',
-        o: 'output'
-    }
+    flags: {
+		help: {
+            type: 'boolean',
+            alias: 'h'
+        },
+        version: {
+            type: 'boolean',
+            alias: 'v'
+        },
+        config: {
+            type: 'string',
+            alias: 'c'
+        },
+        root: {
+            type: 'string',
+            alias: 'r'
+        },
+        'dest-dir': {
+            type: 'string',
+            alias: 'd'
+        },
+        patterns: {
+            type: 'string',
+            alias: 'd'
+        },
+        include: {
+            type: 'string',
+            alias: 'i'
+        },
+        exclude: {
+            type: 'string',
+            alias: 'e'
+        },
+        output: {
+            type: 'string',
+            alias: 'o'
+        },
+        'follow-symlinks': {
+            type: 'string'
+        },
+        'dot-files': {
+            type: 'string'
+        },
+        'empty-dirs': {
+            type: 'string'
+        },
+        'empty-files': {
+            type: 'string'
+        }
+	}
 });
 
 const flags = cli.flags;
 const options = getOptions(flags);
 
-if (Object.keys(flags).length === 0) {
+if (process.argv.length === 2) {
     return cli.showHelp();
 }
 
-return getArtifactsInfo(flags)
-    .then(artifacts => writeArtifacts(artifacts, options));
+getArtifactsInfo(flags)
+    .then(artifacts => writeArtifacts(artifacts, options))
