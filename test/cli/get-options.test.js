@@ -16,33 +16,17 @@ test('should return dest dir option', async t => {
     t.is(options.destDir, 'path/to/dest-dir/');
 });
 
-test('should return truthy options', async t => {
+test('should return boolean options', async t => {
     const options = await getOptions({
         followSymlinks: true,
         dotFiles: true,
-        emptyDirs: 'true',
-        emptyFiles: 1
+        emptyDirs: false,
+        emptyFiles: false
     });
 
     t.deepEqual(options, {
         followSymlinks: true,
         dotFiles: true,
-        emptyDirs: true,
-        emptyFiles: true
-    });
-});
-
-test('should return falsy options', async t => {
-    const options = await getOptions({
-        followSymlinks: false,
-        dotFiles: false,
-        emptyDirs: 'false',
-        emptyFiles: 0
-    });
-
-    t.deepEqual(options, {
-        followSymlinks: false,
-        dotFiles: false,
         emptyDirs: false,
         emptyFiles: false
     });

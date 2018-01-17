@@ -74,16 +74,20 @@ const cli = meow(help, {
             alias: 'o'
         },
         'follow-symlinks': {
-            type: 'string'
+            type: 'boolean',
+            default: false
         },
         'dot-files': {
-            type: 'string'
+            type: 'boolean',
+            default: true
         },
         'empty-dirs': {
-            type: 'string'
+            type: 'boolean',
+            default: true
         },
         'empty-files': {
-            type: 'string'
+            type: 'boolean',
+            default: true
         }
 	}
 });
