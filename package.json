@@ -30,7 +30,7 @@
     "async-each": "1.0.1",
     "es6-promisify": "5.0.0",
     "lodash.pick": "4.4.0",
-    "meow": "4.0.0",
+    "meow": "5.0.0",
     "node-file-eval": "1.0.0",
     "tartifacts": "2.0.0-9",
     "worker-farm": "1.5.2"
