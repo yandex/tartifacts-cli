@@ -42,6 +42,7 @@ Options
       --dot-files       Include dotfiles
       --empty-dirs      Include empty directories
       --empty-files     Include empty files
+      --watch           Watch mode; signals to stop the process: SIGTERM, SIGINT
 
 Options (config mode)
     -c, --config    Path to config with artifacts info
