@@ -6,6 +6,7 @@ const meow = require('meow');
 const getArtifactsInfo = require('../lib/cli').getArtifactsInfo;
 const getOptions = require('../lib/cli').getOptions;
 const writeArtifacts = require('../lib').writeArtifacts;
+const signals = require('../lib/constants/signals');
 
 const help = `
     Usage
@@ -16,6 +17,7 @@ const help = `
       --dot-files       Include dotfiles
       --empty-dirs      Include empty directories
       --empty-files     Include empty files
+      --watch           Watch mode; signals to stop the process: ${signals.join(', ')}
 
     Options (config mode)
       -c, --config    Path to config with artifacts info
@@ -88,6 +90,10 @@ const cli = meow(help, {
         'empty-files': {
             type: 'boolean',
             default: true
+        },
+        'watch': {
+            type: 'boolean',
+            default: false
         }
 	}
 });
@@ -100,4 +106,4 @@ if (process.argv.length === 2) {
 }
 
 getArtifactsInfo(flags)
-    .then(artifacts => writeArtifacts(artifacts, options))
+    .then(artifacts => writeArtifacts(artifacts, options));

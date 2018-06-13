@@ -21,14 +21,16 @@ test('should return boolean options', async t => {
         followSymlinks: true,
         dotFiles: true,
         emptyDirs: false,
-        emptyFiles: false
+        emptyFiles: false,
+        watch: false
     });
 
     t.deepEqual(options, {
         followSymlinks: true,
         dotFiles: true,
         emptyDirs: false,
-        emptyFiles: false
+        emptyFiles: false,
+        watch: false
     });
 });
 
