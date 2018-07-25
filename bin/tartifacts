@@ -101,6 +101,10 @@ const cli = meow(help, {
 const flags = cli.flags;
 const options = getOptions(flags);
 
+if (options.watch) {
+    options.watch = { startTime: Date.now() };
+}
+
 if (process.argv.length === 2) {
     return cli.showHelp();
 }
