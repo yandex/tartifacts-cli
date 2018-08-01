@@ -32,7 +32,7 @@
     "lodash.pick": "4.4.0",
     "meow": "4.0.0",
     "node-file-eval": "1.0.0",
-    "tartifacts": "2.0.0-12"
+    "tartifacts": "yandex/tartifacts#6b39eedac712f24cfeb95b92d85215ae8f33dd8b"
   },
   "devDependencies": {
     "ava": "^0.25.0",
